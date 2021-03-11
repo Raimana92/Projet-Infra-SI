@@ -15,6 +15,10 @@ Mise en place d’une architecture permettant de déployer des applications web 
 * <img src="https://img.icons8.com/color/452/nginx.png" height="20px"> Nginx
 * <img src="https://colibri.unistra.fr/application/assets/images/courses/sql_icone.png" height="20px"> Base de donnée SQL
 
+## Informations
+
+* pfSense :
+  - LAN = 192.168.1.1
 
 ## Contact
 
