@@ -18,7 +18,23 @@ Mise en place d’une architecture permettant de déployer des applications web 
 ## Informations
 
 * pfSense :
-  - LAN = 192.168.1.1
+  - WAN = 192.168.1.15
+  - LAN = 192.168.2.1
+
+* Serveur Web1 :
+  -  IP : 192.168.2.3
+  -  Netmask : 255.255.255.0
+  -  Gateway : 192.168.2.1
+
+* Serveur Web2 :
+  -  IP : 192.168.2.4
+  -  Netmask : 255.255.255.0
+  -  Gateway : 192.168.2.1
+
+* Base de donnée:
+  -  IP : 192.168.2.5
+  -  Netmask : 255.255.255.0
+  -  Gateway : 192.168.2.1
 
 ## Contact
 
