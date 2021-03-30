@@ -4,7 +4,7 @@
 
 Mise en place d’une architecture permettant de déployer des applications web redondées et sécurisées :
 
-<img src="https://media.discordapp.net/attachments/512984619407114243/814425939969966110/unknown.png?width=1204&height=670" width=auto>
+<img src="https://media.discordapp.net/attachments/512984619407114243/814425939969966110/unknown.png?width=1204&height=670" width=600px>
 
 
 ## Outils utilisés
@@ -15,26 +15,28 @@ Mise en place d’une architecture permettant de déployer des applications web 
 * <img src="https://img.icons8.com/color/452/nginx.png" height="20px"> Nginx
 * <img src="https://colibri.unistra.fr/application/assets/images/courses/sql_icone.png" height="20px"> Base de donnée SQL
 
-## Informations
+## Informations - Plan IP
 
-* pfSense :
-  - WAN = 192.168.1.15
-  - LAN = 192.168.2.1
 
+|    | pfSense | Serveur Web1 : Debian| Serveur Web2 : Debian| Base de donnée: Debian|
+|:--:|:-------:|:--------------------:|:--------------------:|:---------------------:|
+| **IP**      | WAN : 192.168.1.15 <br> LAN : 192.168.2.11 | 192.168.2.3 | 192.168.2.4 | 192.168.2.5 
+| **Netmask** | 255.255.255.0 | 255.255.255.0 | 255.255.255.0 | 255.255.255.0 
+| **Gateway** |  | 192.168.2.1 | 192.168.2.1 | 192.168.2.1 
+## Rules NAT - PfSense
+
+Ajouter du Port-Forwarding (redirection de port) pour le SSH et pour le protocole HTTP : 
 * Serveur Web1 :
-  -  IP : 192.168.2.3
-  -  Netmask : 255.255.255.0
-  -  Gateway : 192.168.2.1
+  -  ssh : **user@pfSenseWANAddress -p 2223**
 
 * Serveur Web2 :
-  -  IP : 192.168.2.4
-  -  Netmask : 255.255.255.0
-  -  Gateway : 192.168.2.1
+  -  ssh : **user@pfSenseWANAddress -p 2224**
 
 * Base de donnée:
-  -  IP : 192.168.2.5
-  -  Netmask : 255.255.255.0
-  -  Gateway : 192.168.2.1
+  -  ssh : **user@pfSenseWANAddress -p 2225**
+
+
+<img src="Images\Rules - Port Forwarding.png" border=2px>
 
 ## Contact
 
