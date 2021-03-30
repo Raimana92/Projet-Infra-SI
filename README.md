@@ -38,6 +38,14 @@ Ajouter du Port-Forwarding (redirection de port) pour le SSH et pour le protocol
 
 <img src="Images\Rules - Port Forwarding.png" border=2px>
 
+## Reverse Proxy - Squid
+
+> Utilisation de ce tutoriel : [Reverse Proxy](https://www.it-connect.fr/reverse-proxy-https-avec-pfsense/)
+
+## Loadbalancing
+
+
+
 ## Contact
 
 François BONNIN - francois.bonnin@ynov.com / Raimana SUN - raimana.sun@ynov.com
