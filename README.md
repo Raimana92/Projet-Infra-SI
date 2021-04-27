@@ -4,7 +4,7 @@
 
 Mise en place d’une architecture permettant de déployer des applications web redondées et sécurisées :
 
-<img src="https://media.discordapp.net/attachments/512984619407114243/814425939969966110/unknown.png?width=1204&height=670" width=600px>
+<img src="Images\Schéma.jpg" width=600px>
 
 
 ## Outils utilisés
