@@ -22,8 +22,9 @@ Mise en place d’une architecture permettant de déployer des applications web 
 |:--:|:-------:|:---:|:--------------------:|:--------------------:|:---------------------:|
 | **IP**      | WAN : 192.168.5.50 | LAN : 192.168.2.50 | 192.168.2.3 | 192.168.2.4 | 192.168.2.5 
 | **Netmask** | 255.255.255.0 | 255.255.255.0 | 255.255.255.0 | 255.255.255.0 | 255.255.255.0 
-| **Gateway** | 192.168.5.2 | || 192.168.2.1 | 192.168.2.1 |
-| **Gateway** | 192.168.5.2 | || 192.168.2.11 | 192.168.2.11 |
+| **Gateway** | 192.168.5.2 | | 192.168.2.50 | 192.168.2.50 | 192.168.2.50 |
+
+
 ## Rules NAT - PfSense
 
 Ajouter du Port-Forwarding (redirection de port) pour le SSH et pour le protocole HTTP : 
