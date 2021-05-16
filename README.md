@@ -42,7 +42,23 @@ Ajouter du Port-Forwarding (redirection de port) pour le SSH et pour le protocol
 
 ## Reverse Proxy - Squid
 
-> Utilisation de ce tutoriel : [Reverse Proxy](https://www.it-connect.fr/reverse-proxy-https-avec-pfsense/)
+1. Ajout des serveurs web et association à un nom de domaine `www.projet-infra.fr`
+
+![](https://cdn.discordapp.com/attachments/522143202426224654/843577952905723984/unknown.png)
+<br>
+
+2. Autorisation du flux HTTPS dans le firewall l'interface WAN provenant de n'importe quelle source et à destination du port 443.
+<br>
+
+3. Création et Ajout du certificat SSL
+![](https://cdn.discordapp.com/attachments/522143202426224654/843594325929361418/unknown.png)
+<br>
+
+4. Activation du **Server Squid**
+
+
+## Serveur Apache redondés
+
 
 ## Loadbalancing
 
@@ -53,3 +69,8 @@ Ajouter du Port-Forwarding (redirection de port) pour le SSH et pour le protocol
 François BONNIN - francois.bonnin@ynov.com / Raimana SUN - raimana.sun@ynov.com
 
 Project Link: [https://github.com/Raimana92/Projet-Infra-SI](https://github.com/Raimana92/Projet-Infra-SI)
+
+
+## Sources
+
+> Utilisation de ce tutoriel : [Reverse Proxy](https://www.it-connect.fr/reverse-proxy-https-avec-pfsense/)
