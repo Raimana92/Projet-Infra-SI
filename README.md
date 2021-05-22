@@ -57,10 +57,85 @@ Ajouter du Port-Forwarding (redirection de port) pour le SSH et pour le protocol
 4. Activation du **Server Squid**
 
 
-## Serveur Apache redondés
+## Serveur Nginx
 
+1. `sudo apt-get install nginx`
+
+2. Installation du module php-fpm, il permet la communcation entre le serveur Nginx et PHP
+
+
+### Wordpress
+https://howto.wared.fr/installation-wordpress-ubuntu-nginx/
+
+### MariaDB
+Nous utilisons MariaDB comme serveur de base de données. 
+1. Installation des paquets avec `apt-get install mariadb-server`.
+puis configuration![](https://cdn.discordapp.com/attachments/522143202426224654/845450380368543813/unknown.png)
+
+2. 
+
+## Haute disponibilité
+Nous utilisons Heartbeat pour la mise en place de la haute disponibilité. En effet nous allons créé un clustering avec nos deux serveurs web qui partageront la même ip.
+
+Les étapes ci-dessous devront être réalisés sur les deux serveurs.
+
+1. Configuration de Heartbeat : 
+`apt-get install heartbeat`
+<br>
+
+2. Seulement 3 fichiers de configurations sont nécessaire à la mise en place d'un cluster de serveur, ils se situe dans le dossier _/etc/heartbeat/_:
+
+- **ha.cf** :
+```bash
+# Indication du fichier de log
+logfile /var/log/heartbeat.log
+
+# Les logs heartbeat seront gérés par syslog, dans la catégorie daemon
+logfacility daemon
+
+# On liste tous les membres de notre cluster heartbeat (par les noms de préférences)
+node SrvWeb1
+node SrvWeb2
+
+# On défini la périodicité de controle des noeuds entre eux (en seconde)
+keepalive 1
+
+# Au bout de combien de seconde un noeud sera considéré comme "mort"
+deadtime 10
+
+# Quelle carte résau utiliser pour les broadcasts Heartbeat (eth1 dans mon cas)
+bcast eth1
+
+# Adresse du routeur pour vérifier la connexion au net
+ping 192.168.2.50
+
+# Rebascule-t-on automatiquement sur le primaire si celui-ci redevient vivant
+auto_failback yes
+```
+
+- **authkeys** dont on sécurise les droits avec `chmod 600 /etc/heartbeat/authkeys` :
+```bash
+auth 1
+1 sha1 SecretKey
+```
+
+- **haresources**, va permettre de définir l'action à effectuer lorsqu'un serveur passera de passif à actif:
+`SrvWeb1 192.168.2.40`
+
+3. Démarrage du serveur avec `systemctl start heartbeat`
+
+> Il est possible de vérifier la connexion dans `/var/log/heartbeat.log`
+![](https://cdn.discordapp.com/attachments/522143202426224654/845343578535886918/unknown.png)
+
+4. Notre ip c'est correctement changer en 192.168.2.40 sur le ServWeb1 :
+![](https://cdn.discordapp.com/attachments/522143202426224654/845346496156532781/unknown.png)
+
+5. Si on éteint le ServWeb1, et que l'on regarde les logs du côté du ServWeb2,  on observe que l'ip 192.168.2.40 à bien était transférer sur le ServWeb2: 
+![](https://cdn.discordapp.com/attachments/522143202426224654/845346287293431818/unknown.png)
 
 ## Loadbalancing
+Nous pouvons utiliser HAProxy 
+
 
 
 
